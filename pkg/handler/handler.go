@@ -1,8 +1,16 @@
 package handler
 
-import "github.com/gin-gonic/gin"
+import (
+	"devcortes.com/go/service"
+	"github.com/gin-gonic/gin"
+)
 
 type Handler struct {
+	services *service.Service
+}
+
+func NewHanler(services *service.Service) *Handler {
+	return &Handler{services: services}
 }
 
 func (handler *Handler) InitRoutes() *gin.Engine {
