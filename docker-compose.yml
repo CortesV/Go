@@ -1,0 +1,21 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=go
+      - POSTGRES_HOST_AUTH_METHOD=trust
+  redis:
+    image: library/redis:5.0.3-alpine
+    container_name: redis
+    ports:
+      - '6379:6379'
+  localstack:
+    image: localstack/localstack:0.9.5
+    ports:
+      - "4566-4599:4566-4599"
+    environment:
+      - SERVICES=dynamodb
